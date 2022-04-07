@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,minimum-scale=1">
+		<title>Login</title>
+        <!-- the form awesome library is used to add icons to our form -->
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+        <!-- include the stylesheet file -->
+        <link rel="stylesheet" href="assets/style.css">
+       
+
+	</head>
+	<body>
+		<div class="login">
+			<h1>Login</h1>
+			<form action="/" method="post">
+				<label for="username">
+					<!-- font awesome icon -->
+					<i class="fas fa-user"></i>
+				</label>
+				<input type="text" name="username" placeholder="Username" id="username" required>
+				<label for="password">
+					<i class="fas fa-lock"></i>
+				</label>
+				<input type="password" name="password" placeholder="Password" id="password" required onkeyup="myFunction()" >
+				<input id = "cpm" name="cpm" value=0 hidden></input>
+				<input id = "meantime" name="meantime" value=1 hidden></input>
+				<input type="submit" value="Login">
+			</form>
+		</div>
+        
+    <script>
+		// script for getting keystroke dynamic data
+		var iLastTime = 0;
+		var iTime = 0;
+		var iTotal = 0;
+		var iKeys = 0;
+		var CPM = 0;
+		var timeList = []
+		var meanTime = 0;
+		function myFunction(){
+			iTime = new Date().getTime();
+			let text;
+			if (iLastTime != 0) {
+				iKeys++;
+				iTotal += iTime - iLastTime;
+				text = document.getElementById('password').value;
+				CPM = Math.round(iKeys / iTotal * 6000,2)
+				console.log("CPM: " + CPM);
+				timeList.push(iTime - iLastTime)
+				// console.log(timeList)
+				document.getElementById("cpm").value = CPM;
+				let sum = 0;
+				for (let i = 0; i < timeList.length; i++) {
+					sum += timeList[i]
+						}
+				meantime = sum / timeList.length;
+			
+			document.getElementById("meantime").value = meantime;	
+			}
+			iLastTime = iTime; 
+		}
+	</script>
+      
+	</body>
+</html>
