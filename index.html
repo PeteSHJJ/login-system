@@ -25,7 +25,8 @@
 				</label>
 				<input type="password" name="password" placeholder="Password" id="password" required onkeyup="myFunction()" >
 				<input id = "cpm" name="cpm" value=0 hidden></input>
-				<input id = "meantime" name="meantime" value=1 hidden></input>
+				<input id = "meantime" name="meantime" value=0 hidden></input>
+				<input id = "arr" name="arr" value={} hidden>
 				<input type="submit" value="Login">
 			</form>
 		</div>
@@ -46,18 +47,21 @@
 				iKeys++;
 				iTotal += iTime - iLastTime;
 				text = document.getElementById('password').value;
-				CPM = Math.round(iKeys / iTotal * 6000,2)
-				console.log("CPM: " + CPM);
+				//CPM = Math.round(iKeys / iTotal * 6000,2)
+				//console.log("CPM: " + CPM);
 				timeList.push(iTime - iLastTime)
 				// console.log(timeList)
 				document.getElementById("cpm").value = CPM;
+			/*
 				let sum = 0;
 				for (let i = 0; i < timeList.length; i++) {
 					sum += timeList[i]
 						}
-			meantime = sum / timeList.length;
-			console.log(meantime);
-			document.getElementById("meantime").value = meantime;	
+			meantime = sum / timeList.length; */
+			//console.log(meantime);
+			console.log(timeList);
+			//document.getElementById("meantime").value = meantime;
+			document.getElementById("arr").value = timeList;		
 			}
 			iLastTime = iTime; 
 		}
