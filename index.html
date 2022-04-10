@@ -23,7 +23,7 @@
 				<label for="password">
 					<i class="fas fa-lock"></i>
 				</label>
-				<input type="password" name="password" placeholder="Password" id="password" required onkeyup="myFunction()" >
+				<input type="password" name="password" placeholder="Password" id="password" required onkeyup="getPattern()" >
 				<input id = "cpm" name="cpm" value=0 hidden></input>
 				<input id = "meantime" name="meantime" value=0 hidden></input>
 				<input id = "arr" name="arr" value={} hidden>
@@ -40,7 +40,7 @@
 		var CPM = 0;
 		var timeList = []
 		var meanTime = 0;
-		function myFunction(){
+		function getPattern(){
 			iTime = new Date().getTime();
 			let text;
 			if (iLastTime != 0) {
